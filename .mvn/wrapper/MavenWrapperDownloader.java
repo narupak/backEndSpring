@@ -95,13 +95,13 @@ public class MavenWrapperDownloader {
     }
 
     private static void downloadFileFromURL(String urlString, File destination) throws Exception {
-        if (System.getenv("MVNW_USERNAME") != null && System.getenv("MVNW_PASSWORD") != null) {
-            String username = System.getenv("MVNW_USERNAME");
+        if (System.getenv("MVNW_RegisterNAME") != null && System.getenv("MVNW_PASSWORD") != null) {
+            String Registername = System.getenv("MVNW_RegisterNAME");
             char[] password = System.getenv("MVNW_PASSWORD").toCharArray();
             Authenticator.setDefault(new Authenticator() {
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(username, password);
+                    return new PasswordAuthentication(Registername, password);
                 }
             });
         }
