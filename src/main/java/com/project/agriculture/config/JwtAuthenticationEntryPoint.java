@@ -17,7 +17,11 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint, Se
     /**
      *
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -6856359747475144438L;
+
+    /**
+     *
+     */
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException)

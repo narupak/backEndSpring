@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import com.project.agriculture.entity.User;
-import com.project.agriculture.model.UserModel;
+import com.project.agriculture.model.MemberDto;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -19,10 +19,11 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtTokenUtil implements Serializable {
 
+
     /**
      *
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2463483023027109476L;
 
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
 
@@ -56,9 +57,9 @@ public class JwtTokenUtil implements Serializable {
     }
 
     // generate token for user
-    public String generateToken(UserModel user) {
+    public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
-        return doGenerateToken(claims, user.getUsername());
+        return doGenerateToken(claims, userDetails.getUsername());
     }
 
     // while creating the token -
@@ -74,9 +75,9 @@ public class JwtTokenUtil implements Serializable {
     }
 
     //validate token
-    public Boolean validateToken(String token, UserModel user){
+    public Boolean validateToken(String token,  UserDetails userDetails){
         final String username = getUsernameFromToken(token);
-        return (username.equals(user.getUsername()) && !isTokenExpired(token));
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
 

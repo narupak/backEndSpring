@@ -7,8 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.project.agriculture.model.UserModel;
-import com.project.agriculture.services.UserService;
+import com.project.agriculture.model.MemberDto;
+import com.project.agriculture.services.MemberService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,7 +24,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 public class JwtRequestFilter extends OncePerRequestFilter {
 
     @Autowired
-    private UserService userService;
+    private MemberService memberService;
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
@@ -54,12 +54,12 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         // Once we get the token validate it.
         if(username != null && SecurityContextHolder.getContext().getAuthentication() == null){
-            UserModel user = this.userService.loadUserByUsername(username);
+            UserDetails userDetails = this.memberService.loadUserByUsername(username);
 
             // if token is valid configure Spring Security to manually set
             // authentication
-            if(jwtTokenUtil.validateToken(jwtToken, user)){
-                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(user , null, null);
+            if(jwtTokenUtil.validateToken(jwtToken, userDetails)){
+                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails , null, userDetails.getAuthorities());
                 usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 // After setting the Authentication in the context , we specify
                 // that the current user is authenticated, So it passes the 

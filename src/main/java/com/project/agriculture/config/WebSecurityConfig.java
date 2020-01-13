@@ -1,6 +1,5 @@
 package com.project.agriculture.config;
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private JwtAuthenticationEntryPoint JwtAuthenticationEntryPoint;
 
@@ -58,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // We don't need CSRF for this example
         httpSecurity.csrf().disable()
                 // don't authenticate this particular request
-                .authorizeRequests().antMatchers("/authenticate", "/register").permitAll()
+                .authorizeRequests().antMatchers("/authenticate","/register").permitAll()
                 // all other requests neet to be authenticated
                 .anyRequest().authenticated().and()
                 // make sure we use stateless session; session won't be used to

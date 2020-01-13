@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class JwtRequest implements Serializable {
 
+    
     /**
      *
      */

@@ -1,11 +1,11 @@
 package com.project.agriculture.repository;
 
-import com.project.agriculture.entity.User;
+import com.project.agriculture.entity.GenderEntity;
 
 import org.springframework.data.repository.CrudRepository;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> { 
-    User findByUsername(String username);
+public interface GenderRepository extends CrudRepository<GenderEntity, Long> { 
 }  
