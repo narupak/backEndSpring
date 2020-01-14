@@ -40,8 +40,8 @@ public class MemberEntity implements Serializable {
     @Column(name = "member_password")
     private String password;
 
-    @Column(name = "status_user_id")
-    private Long statusUserId;
+    @Column(name = "member_role_id")
+    private Long roleId;
 
     @Column(name = "create_by")
     private transient String createBy;
@@ -111,12 +111,13 @@ public class MemberEntity implements Serializable {
         this.password = password;
     }
 
-    public Long getStatusUserId() {
-        return this.statusUserId;
+    
+    public Long getRoleId() {
+        return this.roleId;
     }
 
-    public void setStatusUserId(Long statusUserId) {
-        this.statusUserId = statusUserId;
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 
     public String getTel() {

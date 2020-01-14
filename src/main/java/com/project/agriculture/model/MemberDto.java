@@ -2,7 +2,7 @@ package com.project.agriculture.model;
 
 import java.io.Serializable;
 
-public class MemberDto implements Serializable{
+public class MemberDto implements Serializable {
 	/**
 	 *
 	 */
@@ -14,10 +14,18 @@ public class MemberDto implements Serializable{
 	private String firstname;
 	private String lastname;
 	private Long genderId;
-	private Long statusUserId;
+	private Long roleId;
 
 	public String getUsername() {
 		return this.username;
+	}
+
+	public Long getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
 	}
 
 	public String getLastname() {
@@ -34,14 +42,6 @@ public class MemberDto implements Serializable{
 
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
-	}
-
-	public Long getStatusUserId() {
-		return statusUserId;
-	}
-
-	public void setStatusUserId(Long statusUserId) {
-		this.statusUserId = statusUserId;
 	}
 
 	public Long getGenderId() {

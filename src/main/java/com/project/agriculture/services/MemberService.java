@@ -8,4 +8,5 @@ import org.springframework.security.core.userdetails.UserDetails;
 public interface MemberService {
     MemberDto saveUser(MemberDto user);
     UserDetails loadUserByUsername(String username);
+    MemberDto getUserByUsername(String username);
 } 

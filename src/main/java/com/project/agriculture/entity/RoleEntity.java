@@ -11,8 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "status_user")
-public class StatusUserEntity implements Serializable {
+@Table(name = "role")
+public class RoleEntity implements Serializable {
 
     /**
      *
@@ -21,11 +21,11 @@ public class StatusUserEntity implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "status_user_id")
-    private long statusUserId;
+    @Column(name = "role_id")
+    private long roleId;
 
-    @Column(name = "status_suer_name")
-    private String statusUserName;
+    @Column(name = "role_name")
+    private String roleName;
 
     @Column(name = "create_by")
     private String createBy;
@@ -38,22 +38,22 @@ public class StatusUserEntity implements Serializable {
 
     @Column(name = "update_date")
     private Date updateDate;
-    
-    public long getStatusUserId() {
-        return this.statusUserId;
+
+    public long getRoleId() {
+        return this.roleId;
     }
 
-    public void setStatusUserId(long statusUserId) {
-        this.statusUserId = statusUserId;
+    public void setRoleId(long roleId) {
+        this.roleId = roleId;
     }
 
-    public String getStatusUserName() {
-        return this.statusUserName;
+    public String getRoleName() {
+        return this.roleName;
     }
 
-    public void setStatusUserName(String statusUserName) {
-        this.statusUserName = statusUserName;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
-    
+
 } 

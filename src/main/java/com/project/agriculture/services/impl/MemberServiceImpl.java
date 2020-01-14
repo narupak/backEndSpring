@@ -44,7 +44,7 @@ public class MemberServiceImpl implements MemberService,UserDetailsService {
         member.setFirstname(memberDto.getFirstname());
         member.setLastname(memberDto.getLastname());
         member.setGenderId(memberDto.getGenderId());
-        member.setStatusUserId(memberDto.getStatusUserId());
+        member.setRoleId(memberDto.getRoleId());
         return member;
     }
 
@@ -57,7 +57,7 @@ public class MemberServiceImpl implements MemberService,UserDetailsService {
         memberDto.setFirstname(member.getFirstname());
         memberDto.setLastname(member.getLastname());
         memberDto.setGenderId(member.getGenderId());
-        memberDto.setStatusUserId(member.getStatusUserId());
+        memberDto.setRoleId(member.getRoleId());
         return memberDto;
     }
 
@@ -71,5 +71,11 @@ public class MemberServiceImpl implements MemberService,UserDetailsService {
         }else{
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
+    }
+
+    @Override
+    public MemberDto getUserByUsername(String username) {
+        MemberEntity member = memberRepository.findByUsername(username);
+        return mapEntitytoModel(member);
     }
 }
